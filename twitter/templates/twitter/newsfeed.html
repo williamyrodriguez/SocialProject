@@ -12,8 +12,6 @@
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">{{request.user.first_name}}</h5>
                     <h6 class="card-title font-weight-bold">@{{request.user}}</h6>
-
-
                     <p class="card-text">{{request.user.profile.bio}} </p>
                     <h6 class="card-title font-weight-bold">
                         100 Followers
@@ -23,9 +21,9 @@
                 </div>
 
             </div>
-            <button id="addATweetLeft" onclick="addTweet()" type="button"
+            <a href="{% url 'home' %}" id="addATweetLeft"  type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</button>
+                class="btn btn-lg btn-block mt-4 text-white ">Edit my profile</a>
         </div>
     </div>
     <!-- End Barra Izquierda -->
@@ -38,8 +36,7 @@
                 <div class="col-xs">
                     <!-- Image form -->
                     <img src="{{request.user.profile.image.url}}" alt=""
-                        class="avator">
-                    <!-- Formulario -->
+                        class="avator">                    
                 </div>
 
                 <!-- Formulario -->
@@ -62,14 +59,13 @@
                 <!-- Formulario -->
 
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            </div>
+            <div class="d-flex justify-content-center mt-2"></div>
         </div>
 
         <!-- Tweets -->
+        <!-- FOR LOOP HERE -->
         {% for post in posts %}
-        <div id="tweetCards">
-            <!-- FOR LOOP HERE -->
+        <div id="tweetCards">   
             <div class="tweet-wrap" style="border-radius:20px">
                 <div class="tweet-header">
                     <img src="{{post.user.profile.image.url}}"
@@ -78,13 +74,12 @@
                         <a href="{% url 'profile' post.user%}">
                             {{ post.user.first_name }}
                         </a>
-                        <span>@{{post.user}}</span><span>. {{post.timestamp|naturaltime}}
-                        </span>
+                        <span>@{{post.user}}</span>
+                        <span>. {{post.timestamp|naturaltime}}</span>
                         <p>🔥 {{post.content}} </p>
                     </div>
                 </div>
                 <div class="tweet-info-counts">
-
                     <div class="comments">
                         <button style="background: white; border: none;">
                             <svg class="feather feather-message-circle sc-dnqmqq jxshSx"
@@ -137,10 +132,9 @@
                     <!-- END-DELETE -->
                 </div>
             </div>
-            <!-- FOR LOOP HERE -->
-
         </div>
         {%endfor%}
+        <!-- FOR LOOP HERE -->
         <!-- EndTweets -->
 
 

@@ -41,8 +41,9 @@
                 <div class="tweet-header">
                     <img src="{{post.user.profile.image.url}}" alt="" class="avator">
                     <div class="tweet-header-info">
-                        {{post.user.first_name}} <span>@{{post.user}}</span><span>{{post.timestamp|naturaltime}}
-                        </span>
+                        {{post.user.first_name}} 
+                        <span>@{{post.user}}</span>
+                        <span>{{post.timestamp|naturaltime}}</span>
                         <p>{{post.content}}</p>
                     </div>
                 </div>
@@ -90,11 +91,13 @@
                     </div>
 
                     <!-- DELETE -->
+                    {% if request.user == post.user%}
                     <div class="trash">
                         <a href="#" style="background: white; border: none;">
                             <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                         </a>
                     </div>
+                    {%endif%}
                     <!-- END-DELETE -->
                 </div>
             </div>
