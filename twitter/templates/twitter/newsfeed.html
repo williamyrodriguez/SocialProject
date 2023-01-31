@@ -14,14 +14,14 @@
                     <h6 class="card-title font-weight-bold">@{{request.user}}</h6>
                     <p class="card-text">{{request.user.profile.bio}} </p>
                     <h6 class="card-title font-weight-bold">
-                        100 Followers
-                        100 Following
+                        {{request.user.profile.followers.count}} Followers
+                        {{request.user.profile.following.count}} Following
                     </h6>
-                    <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
+                    <a href="{% url 'profile' request.user%}" class="btn  text-white rounded-pill">My profile</a>
                 </div>
 
             </div>
-            <a href="{% url 'home' %}" id="addATweetLeft"  type="button"
+            <a href="{% url 'edit' %}" id="addATweetLeft"  type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
                 class="btn btn-lg btn-block mt-4 text-white ">Edit my profile</a>
         </div>

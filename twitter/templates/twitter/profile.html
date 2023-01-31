@@ -16,15 +16,25 @@
 
                     <p class="card-text">{{user.profile.bio}}</p>
                     <h6 class="card-title font-weight-bold">
-                        100 Followers
-                        100 Following
+                        {{ user.profile.followers.count }} Followers
+                        {{ user.profile.following.count }} Following
                     </h6>
+                    {% if request.user.is_authenticated %}
+                        {% if user.username != request.user.username %}
+                            {% if user not in request.user.profile.following %}
+                                <a href="{% url 'follow' user %}" class="btn text_white rounded-pill">Follow</a>
+                            {% else %}
+                                <a href="{% url 'unfollow' user %}" class="btn text_white rounded-pill">Unfollow</a>
+                            {%endif%}
+                        {%endif%}
+                    {%endif%}
+                    
                 </div>
 
             </div>
-            <a href="#" id="addATweetLeft" type="button"
+            <a href="{% url 'edit' %}" id="addATweetLeft" type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</a>
+                class="btn btn-lg btn-block mt-4 text-white ">Edit my profile</a>
         </div>
     </div>
     <!-- End Barra Izquierda -->
